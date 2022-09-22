@@ -66,6 +66,9 @@
     <Compile Include="Assets/Scenes/Enemy.cs" />
     <Compile Include="Assets/Scenes/Game.cs" />
     <Compile Include="Assets/Scenes/DirectionExtensions.cs" />
+    <Compile Include="Assets/Scenes/FloatRange.cs" />
+    <Compile Include="Assets/Scenes/FloatRangeSliderAttribute.cs" />
+    <Compile Include="Assets/Scenes/FloatRangeSliderDrawer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
     EnemyFactory originFactory;
 
     public EnemyFactory OriginFactory
@@ -157,5 +156,10 @@ public class Enemy : MonoBehaviour
         model.localPosition = Vector3.zero;
         transform.localRotation = direction.GetRotation();
         progressFactor = 2f;
+    }
+
+    public void Initialize(float scale)
+    {
+        model.localScale = new Vector3(scale, scale, scale);
     }
 }
