@@ -1,16 +1,21 @@
 ﻿<Properties StartupConfiguration="{297843FE-4942-F2A5-E75E-1665DB23D755}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/GameTileContentFactory.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/DirectionExtensions.cs">
     <Files>
-      <File FileName="Assets/Scenes/GameBoard.cs" Line="86" Column="14" />
-      <File FileName="Assets/Scenes/Game.cs" />
-      <File FileName="Assets/Scenes/GameTile.cs" />
+      <File FileName="Assets/Scenes/GameBoard.cs" Line="183" Column="22" />
+      <File FileName="Assets/Scenes/Game.cs" Line="68" Column="13" />
+      <File FileName="Assets/Scenes/GameTile.cs" Line="60" Column="1" />
       <File FileName="Assets/Scenes/GameTileContent.cs" />
-      <File FileName="Assets/Scenes/GameTileContentFactory.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scenes/GameTileContentFactory.cs" />
+      <File FileName="Assets/Scenes/GameObjectFactory.cs" />
+      <File FileName="Assets/Scenes/EnemyFactory.cs" />
+      <File FileName="Assets/Scenes/Enemy.cs" Line="27" Column="23" />
+      <File FileName="Assets/Scenes/EnemyCollection.cs" />
+      <File FileName="Assets/Scenes/DirectionExtensions.cs" Line="24" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="54578b71-a78d-4c52-a1d6-f72ac8578ee3" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="97cf6d15-cba8-4919-9c1c-a073eb9283c8" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

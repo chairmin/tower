@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,11 +53,19 @@
     <UnityVersion>2022.1.14f1c1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Analyzers/Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets/Scenes/EnemyFactory.cs" />
     <Compile Include="Assets/Scenes/GameTileContentFactory.cs" />
     <Compile Include="Assets/Scenes/GameBoard.cs" />
     <Compile Include="Assets/Scenes/GameTile.cs" />
+    <Compile Include="Assets/Scenes/EnemyCollection.cs" />
+    <Compile Include="Assets/Scenes/GameObjectFactory.cs" />
     <Compile Include="Assets/Scenes/GameTileContent.cs" />
+    <Compile Include="Assets/Scenes/Enemy.cs" />
     <Compile Include="Assets/Scenes/Game.cs" />
+    <Compile Include="Assets/Scenes/DirectionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
