@@ -82,6 +82,7 @@ public class Enemy : MonoBehaviour
         direction = tileFrom.PathDirection;
         directionChange = DirectionChange.None;
         directionAngleFrom = directionAngleTo = direction.GetAngle();
+        model.localPosition = new Vector3(pathOffset, 0f);
         transform.localRotation = direction.GetRotation();
         progressFactor = 2f;
     }
@@ -116,31 +117,40 @@ public class Enemy : MonoBehaviour
         transform.localRotation = direction.GetRotation();
         directionAngleTo = direction.GetAngle();
         model.localPosition = Vector3.zero;
+        model.localPosition = new Vector3(pathOffset, 0f);
         progressFactor = 1f;
     }
 
     void PrepareTurnRight()
     {
         directionAngleTo = directionAngleFrom + 90f;
-        model.localPosition = new Vector3(-0.5f, 0f);
+        //model.localPosition = new Vector3(-0.5f, 0f);
+        model.localPosition = new Vector3(pathOffset - 0.5f, 0f);
         transform.localPosition = positionFrom + direction.GetHalfVector();
-        progressFactor = 1f / (Mathf.PI * 0.25f);
+        //progressFactor = 1f / (Mathf.PI * 0.25f);
+        progressFactor = 1f / (Mathf.PI * 0.5f * (0.5f - pathOffset));
     }
 
     void PrepareTurnLeft()
     {
         directionAngleTo = directionAngleFrom - 90f;
-        model.localPosition = new Vector3(0.5f, 0f);
+        //model.localPosition = new Vector3(0.5f, 0f);
+        model.localPosition = new Vector3(pathOffset + 0.5f, 0f);
         transform.localPosition = positionFrom + direction.GetHalfVector();
-        progressFactor = 1f / (Mathf.PI * 0.25f);
+        //progressFactor = 1f / (Mathf.PI * 0.25f);
+        progressFactor = 1f / (Mathf.PI * 0.5f * (0.5f + pathOffset));
     }
 
     void PrepareTurnAround()
     {
-        directionAngleTo = directionAngleFrom + 180f;
-        model.localPosition = Vector3.zero;
+        //directionAngleTo = directionAngleFrom + 180f;
+        directionAngleTo = directionAngleFrom + (pathOffset < 0f ? 180f : -180f);
+        //model.localPosition = Vector3.zero;
+        model.localPosition = new Vector3(pathOffset, 0f);
         transform.localPosition = positionFrom;
-        progressFactor = 2f;
+        //progressFactor = 2f;
+        progressFactor =
+            1f / (Mathf.PI * Mathf.Max(Mathf.Abs(pathOffset), 0.2f));
     }
 
     [SerializeField]
@@ -153,13 +163,16 @@ public class Enemy : MonoBehaviour
         positionTo = tileFrom.transform.localPosition;
         directionChange = DirectionChange.None;
         directionAngleTo = direction.GetAngle();
-        model.localPosition = Vector3.zero;
+        //model.localPosition = Vector3.zero;
+        model.localPosition = new Vector3(pathOffset, 0f);
         transform.localRotation = direction.GetRotation();
         progressFactor = 2f;
     }
 
-    public void Initialize(float scale)
+    float pathOffset;
+    public void Initialize(float scale, float pathOffset)
     {
         model.localScale = new Vector3(scale, scale, scale);
+        this.pathOffset = pathOffset;
     }
 }
