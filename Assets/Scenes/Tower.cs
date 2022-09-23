@@ -73,7 +73,7 @@ public class Tower : GameTileContent
 		);
 		if (hits > 0)
 		{
-			target = targetsBuffer[0].GetComponent<TargetPoint>();
+			target = targetsBuffer[Random.Range(0, hits)].GetComponent<TargetPoint>();
 			Debug.Assert(target != null, "Targeted non-enemy!", targetsBuffer[0]);
 			return true;
 		}
@@ -81,7 +81,7 @@ public class Tower : GameTileContent
 		return false;
 	}
 
-	static Collider[] targetsBuffer = new Collider[1];
+	static Collider[] targetsBuffer = new Collider[100];
 
 	bool TrackTarget()
 	{
