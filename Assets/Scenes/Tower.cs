@@ -36,20 +36,32 @@ public class Tower : GameTileContent
 		//);
 		Vector3 a = transform.localPosition;
 		Vector3 b = a;
-		b.y += 3f;
-		Collider[] targets = Physics.OverlapCapsule(
-			a, b, targetingRange, enemyLayerMask
-		);
+		//b.y += 3f;
+		//Collider[] targets = Physics.OverlapCapsule(
+		//	a, b, targetingRange, enemyLayerMask
+		//);
 
-		if (targets.Length > 0)
+		//if (targets.Length > 0)
+		//{
+		//	target = targets[0].GetComponent<TargetPoint>();
+		//	Debug.Assert(target != null, "Targeted non-enemy!", targets[0]);
+		//	return true;
+		//}
+		b.y += 2f;
+		int hits = Physics.OverlapCapsuleNonAlloc(
+			a, b, targetingRange, targetsBuffer, enemyLayerMask
+		);
+		if (hits > 0)
 		{
-			target = targets[0].GetComponent<TargetPoint>();
-			Debug.Assert(target != null, "Targeted non-enemy!", targets[0]);
+			target = targetsBuffer[0].GetComponent<TargetPoint>();
+			Debug.Assert(target != null, "Targeted non-enemy!", targetsBuffer[0]);
 			return true;
 		}
 		target = null;
 		return false;
 	}
+
+	static Collider[] targetsBuffer = new Collider[1];
 
 	bool TrackTarget()
 	{
