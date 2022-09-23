@@ -69,6 +69,7 @@ public class Game : MonoBehaviour
         }
 
         enemies.GameUpdate();
+        board.GameUpdate();
     }
 
     void HandleAlternativeTouch()

@@ -33,5 +33,7 @@ public class GameTileContent : MonoBehaviour
 
     public bool BlocksPath =>
         Type == GameTileContentType.Wall || Type == GameTileContentType.Tower;
+
+    public virtual void GameUpdate() { }
 }
 
