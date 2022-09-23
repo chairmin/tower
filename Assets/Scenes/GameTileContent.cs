@@ -5,6 +5,7 @@ public enum GameTileContentType
     Empty, Destination, Wall, SpawnPoint, Tower
 }
 
+[SelectionBase]
 public class GameTileContent : MonoBehaviour
 {
     [SerializeField]
