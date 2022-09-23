@@ -27,12 +27,23 @@ public class Tower : GameTileContent
 			Shoot();
 			//Debug.Log("Acquired target!");
 		}
+		else
+		{
+			laserBeam.localScale = Vector3.zero;
+		}
 	}
 
 	void Shoot()
 	{
 		Vector3 point = target.Position;
 		turret.LookAt(point);
+
+		laserBeam.localRotation = turret.localRotation;
+		float d = Vector3.Distance(turret.position, point);
+		laserBeamScale.z = d;
+		laserBeam.localScale = laserBeamScale;
+		laserBeam.localPosition =
+			turret.localPosition + 0.5f * d * laserBeam.forward;
 	}
 
 	const int enemyLayerMask = 1 << 9;
@@ -97,5 +108,12 @@ public class Tower : GameTileContent
 	}
 
 	[SerializeField]
-	Transform turret = default;
+	Transform turret = default, laserBeam = default;
+
+	Vector3 laserBeamScale;
+
+	void Awake()
+	{
+		laserBeamScale = laserBeam.localScale;
+	}
 }
