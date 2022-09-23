@@ -1,15 +1,11 @@
 ﻿<Properties StartupConfiguration="{297843FE-4942-F2A5-E75E-1665DB23D755}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/Tower.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/GameTileContent.cs">
     <Files>
-      <File FileName="Assets/Scenes/GameBoard.cs" Line="121" Column="43" />
-      <File FileName="Assets/Scenes/Game.cs" Line="42" Column="17" />
+      <File FileName="Assets/Scenes/GameBoard.cs" Line="272" Column="1" />
+      <File FileName="Assets/Scenes/Game.cs" Line="105" Column="1" />
       <File FileName="Assets/Scenes/GameTile.cs" Line="62" Column="9" />
-      <File FileName="Assets/Scenes/GameTileContent.cs" Line="5" Column="48" />
-      <File FileName="Assets/Scenes/GameTileContentFactory.cs" Line="43" Column="1" />
-      <File FileName="Assets/Scenes/GameObjectFactory.cs" />
-      <File FileName="Assets/Scenes/EnemyFactory.cs" Line="29" Column="1" />
-      <File FileName="Assets/Scenes/Enemy.cs" Line="90" Column="1" />
-      <File FileName="Assets/Scenes/EnemyCollection.cs" />
+      <File FileName="Assets/Scenes/GameTileContent.cs" Line="33" Column="2" />
+      <File FileName="Assets/Scenes/GameTileContentFactory.cs" Line="17" Column="1" />
       <File FileName="Assets/Scenes/Tower.cs" Line="4" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

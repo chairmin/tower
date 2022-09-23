@@ -44,5 +44,6 @@ public class GameTileContentFactory : GameObjectFactory
         Debug.Assert(false, "Unsupported type: " + type);
         return null;
     }
+
 }
 

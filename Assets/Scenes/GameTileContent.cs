@@ -30,5 +30,8 @@ public class GameTileContent : MonoBehaviour
     }
 
     Tower towerPrefab = default;
+
+    public bool BlocksPath =>
+        Type == GameTileContentType.Wall || Type == GameTileContentType.Tower;
 }
 
