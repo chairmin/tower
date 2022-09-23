@@ -22,7 +22,7 @@ public class Tower : GameTileContent
 
 	public override void GameUpdate()
 	{
-		if (AcquireTarget())
+		if (TrackTarget() || AcquireTarget())
 		{
 			Debug.Log("Acquired target!");
 		}
@@ -42,5 +42,21 @@ public class Tower : GameTileContent
 		}
 		target = null;
 		return false;
+	}
+
+	bool TrackTarget()
+	{
+		if (target == null)
+		{
+			return false;
+		}
+		Vector3 a = transform.localPosition;
+		Vector3 b = target.Position;
+		if (Vector3.Distance(a, b) > targetingRange + 0.125f * target.Enemy.Scale)
+		{
+			target = null;
+			return false;
+		}
+		return true;
 	}
 }
