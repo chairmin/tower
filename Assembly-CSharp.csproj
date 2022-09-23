@@ -72,6 +72,7 @@
     <Compile Include="Assets/Scenes/Tower.cs" />
     <Compile Include="Assets/Scenes/TargetPoint.cs" />
     <Compile Include="Assets/Scenes/LaserTower.cs" />
+    <Compile Include="Assets/Scenes/MortarTower.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
