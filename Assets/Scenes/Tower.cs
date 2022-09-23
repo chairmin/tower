@@ -44,6 +44,8 @@ public class Tower : GameTileContent
 		laserBeam.localScale = laserBeamScale;
 		laserBeam.localPosition =
 			turret.localPosition + 0.5f * d * laserBeam.forward;
+
+		target.Enemy.ApplyDamage(damagePerSecond * Time.deltaTime);
 	}
 
 	const int enemyLayerMask = 1 << 9;
@@ -116,4 +118,7 @@ public class Tower : GameTileContent
 	{
 		laserBeamScale = laserBeam.localScale;
 	}
+
+	[SerializeField, Range(1f, 100f)]
+	float damagePerSecond = 10f;
 }
