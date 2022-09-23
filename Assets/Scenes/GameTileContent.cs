@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum GameTileContentType
 {
-    Empty, Destination, Wall, SpawnPoint
+    Empty, Destination, Wall, SpawnPoint, Tower
 }
 
 public class GameTileContent : MonoBehaviour
@@ -28,5 +28,7 @@ public class GameTileContent : MonoBehaviour
     {
         originFactory.Reclaim(this);
     }
+
+    Tower towerPrefab = default;
 }
 
