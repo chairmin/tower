@@ -268,5 +268,9 @@ public class GameBoard : MonoBehaviour
                 FindPaths();
             }
         }
+        else if (tile.Content.Type == GameTileContentType.Wall)
+        {
+            tile.Content = contentFactory.Get(GameTileContentType.Tower);
+        }
     }
 }
