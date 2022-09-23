@@ -71,6 +71,7 @@
     <Compile Include="Assets/Scenes/FloatRangeSliderDrawer.cs" />
     <Compile Include="Assets/Scenes/Tower.cs" />
     <Compile Include="Assets/Scenes/TargetPoint.cs" />
+    <Compile Include="Assets/Scenes/LaserTower.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

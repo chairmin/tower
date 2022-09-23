@@ -1,9 +1,14 @@
 using UnityEngine;
 
-public class Tower : GameTileContent
+public enum TowerType
+{
+	Laser, Mortar
+}
+
+public abstract class Tower : GameTileContent
 {
 	[SerializeField, Range(1.5f, 10.5f)]
-	float targetingRange = 1.5f;
+	protected float targetingRange = 1.5f;
 
 	void OnDrawGizmosSelected()
 	{
@@ -11,45 +16,10 @@ public class Tower : GameTileContent
 		Vector3 position = transform.localPosition;
 		position.y += 0.01f;
 		Gizmos.DrawWireSphere(position, targetingRange);
-
-		if (target != null)
-		{
-			Gizmos.DrawLine(position, target.Position);
-		}
-	}
-
-	TargetPoint target;
-
-	public override void GameUpdate()
-	{
-		if (TrackTarget() || AcquireTarget())
-		{
-			Shoot();
-			//Debug.Log("Acquired target!");
-		}
-		else
-		{
-			laserBeam.localScale = Vector3.zero;
-		}
-	}
-
-	void Shoot()
-	{
-		Vector3 point = target.Position;
-		turret.LookAt(point);
-
-		laserBeam.localRotation = turret.localRotation;
-		float d = Vector3.Distance(turret.position, point);
-		laserBeamScale.z = d;
-		laserBeam.localScale = laserBeamScale;
-		laserBeam.localPosition =
-			turret.localPosition + 0.5f * d * laserBeam.forward;
-
-		target.Enemy.ApplyDamage(damagePerSecond * Time.deltaTime);
 	}
 
 	const int enemyLayerMask = 1 << 9;
-	bool AcquireTarget()
+	protected bool AcquireTarget(out TargetPoint target)
 	{
 		//Collider[] targets = Physics.OverlapSphere(
 		//	transform.localPosition, targetingRange, enemyLayerMask
@@ -83,7 +53,7 @@ public class Tower : GameTileContent
 
 	static Collider[] targetsBuffer = new Collider[100];
 
-	bool TrackTarget()
+	protected bool TrackTarget(ref TargetPoint target)
 	{
 		if (target == null)
 		{
@@ -109,16 +79,5 @@ public class Tower : GameTileContent
 		return true;
 	}
 
-	[SerializeField]
-	Transform turret = default, laserBeam = default;
-
-	Vector3 laserBeamScale;
-
-	void Awake()
-	{
-		laserBeamScale = laserBeam.localScale;
-	}
-
-	[SerializeField, Range(1f, 100f)]
-	float damagePerSecond = 10f;
+	public abstract TowerType TowerType { get; }
 }
