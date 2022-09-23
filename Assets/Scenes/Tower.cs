@@ -24,8 +24,15 @@ public class Tower : GameTileContent
 	{
 		if (TrackTarget() || AcquireTarget())
 		{
-			Debug.Log("Acquired target!");
+			Shoot();
+			//Debug.Log("Acquired target!");
 		}
+	}
+
+	void Shoot()
+	{
+		Vector3 point = target.Position;
+		turret.LookAt(point);
 	}
 
 	const int enemyLayerMask = 1 << 9;
@@ -88,4 +95,7 @@ public class Tower : GameTileContent
 		}
 		return true;
 	}
+
+	[SerializeField]
+	Transform turret = default;
 }
