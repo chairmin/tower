@@ -73,6 +73,11 @@
     <Compile Include="Assets/Scenes/TargetPoint.cs" />
     <Compile Include="Assets/Scenes/LaserTower.cs" />
     <Compile Include="Assets/Scenes/MortarTower.cs" />
+    <Compile Include="Assets/Scenes/WarEntity.cs" />
+    <Compile Include="Assets/Scenes/Shell.cs" />
+    <Compile Include="Assets/Scenes/WarFactory.cs" />
+    <Compile Include="Assets/Scenes/GameBehavior.cs" />
+    <Compile Include="Assets/Scenes/GameBehaviorCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

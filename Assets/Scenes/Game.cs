@@ -19,7 +19,9 @@ public class Game : MonoBehaviour
     float spawnSpeed = 1f;
     float spawnProgress;
 
-    EnemyCollection enemies = new EnemyCollection();
+    //EnemyCollection enemies = new EnemyCollection();
+    GameBehaviorCollection enemies = new GameBehaviorCollection();
+    GameBehaviorCollection nonEnemies = new GameBehaviorCollection();
 
     void Awake()
 	{
@@ -80,6 +82,7 @@ public class Game : MonoBehaviour
         enemies.GameUpdate();
         Physics.SyncTransforms();
         board.GameUpdate();
+        nonEnemies.GameUpdate();
     }
 
     void HandleAlternativeTouch()
@@ -125,4 +128,20 @@ public class Game : MonoBehaviour
     }
 
     TowerType selectedTowerType;
+
+    [SerializeField]
+    WarFactory warFactory = default;
+    static Game instance;
+
+    public static Shell SpawnShell()
+    {
+        Shell shell = instance.warFactory.Shell;
+        instance.nonEnemies.Add(shell);
+        return shell;
+    }
+
+    void OnEnable()
+    {
+        instance = this;
+    }
 }
