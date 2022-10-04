@@ -4,15 +4,19 @@ public class Shell : WarEntity {
 	Vector3 launchPoint, targetPoint, launchVelocity;
 
 	public void Initialize(
-		Vector3 launchPoint, Vector3 targetPoint, Vector3 launchVelocity
+		Vector3 launchPoint, Vector3 targetPoint, Vector3 launchVelocity,
+		float blastRadius, float damage
 	)
 	{
 		this.launchPoint = launchPoint;
 		this.targetPoint = targetPoint;
 		this.launchVelocity = launchVelocity;
+
+		this.blastRadius = blastRadius;
+		this.damage = damage;
 	}
 
-	float age;
+	float age, blastRadius, damage;
 	public override bool GameUpdate()
 	{
 		age += Time.deltaTime;
@@ -24,10 +28,16 @@ public class Shell : WarEntity {
 		d.y -= 9.81f * age;
 		if (p.y <= 0f)
 		{
+			TargetPoint.FillBuffer(targetPoint, blastRadius);
+			for (int i = 0; i < TargetPoint.BufferedCount; i++)
+			{
+				TargetPoint.GetBuffered(i).Enemy.ApplyDamage(damage);
+			}
 			OriginFactory.Reclaim(this);
 			return false;
 		}
 		transform.localRotation = Quaternion.LookRotation(d);
 		return true;
 	}
+
 }

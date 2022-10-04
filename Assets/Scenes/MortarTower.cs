@@ -55,7 +55,8 @@ public class MortarTower : Tower
 			Quaternion.LookRotation(new Vector3(dir.x, tanTheta, dir.y));
 		Game.SpawnShell().Initialize(
 			launchPoint, targetPoint,
-			new Vector3(s * cosTheta * dir.x, s * sinTheta, s * cosTheta * dir.y)
+			new Vector3(s * cosTheta * dir.x, s * sinTheta, s * cosTheta * dir.y),
+			shellBlastRadius, shellDamage
 		);
 
 		Vector3 prev = launchPoint, next;
@@ -94,5 +95,11 @@ public class MortarTower : Tower
 	}
 
 	float launchProgress;
+
+	[SerializeField, Range(0.5f, 3f)]
+	float shellBlastRadius = 1f;
+
+	[SerializeField, Range(1f, 100f)]
+	float shellDamage = 10f;
 }
 
