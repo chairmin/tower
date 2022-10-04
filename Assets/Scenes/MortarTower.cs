@@ -53,6 +53,10 @@ public class MortarTower : Tower
 
 		mortar.localRotation =
 			Quaternion.LookRotation(new Vector3(dir.x, tanTheta, dir.y));
+		Game.SpawnShell().Initialize(
+			launchPoint, targetPoint,
+			new Vector3(s * cosTheta * dir.x, s * sinTheta, s * cosTheta * dir.y)
+		);
 
 		Vector3 prev = launchPoint, next;
 		for (int i = 1; i <= 10; i++)
