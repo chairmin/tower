@@ -38,6 +38,8 @@ public class Shell : WarEntity {
 			return false;
 		}
 		transform.localRotation = Quaternion.LookRotation(d);
+
+		Game.SpawnExplosion().Initialize(p, 0.1f);
 		return true;
 	}
 
