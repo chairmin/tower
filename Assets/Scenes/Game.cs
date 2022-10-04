@@ -144,4 +144,11 @@ public class Game : MonoBehaviour
     {
         instance = this;
     }
+
+    public static Explosion SpawnExplosion()
+    {
+        Explosion explosion = instance.warFactory.Explosion;
+        instance.nonEnemies.Add(explosion);
+        return explosion;
+    }
 }

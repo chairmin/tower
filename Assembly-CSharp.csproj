@@ -78,6 +78,7 @@
     <Compile Include="Assets/Scenes/WarFactory.cs" />
     <Compile Include="Assets/Scenes/GameBehavior.cs" />
     <Compile Include="Assets/Scenes/GameBehaviorCollection.cs" />
+    <Compile Include="Assets/Scenes/Explosion.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

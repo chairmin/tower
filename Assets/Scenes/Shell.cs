@@ -28,11 +28,12 @@ public class Shell : WarEntity {
 		d.y -= 9.81f * age;
 		if (p.y <= 0f)
 		{
-			TargetPoint.FillBuffer(targetPoint, blastRadius);
-			for (int i = 0; i < TargetPoint.BufferedCount; i++)
-			{
-				TargetPoint.GetBuffered(i).Enemy.ApplyDamage(damage);
-			}
+			//TargetPoint.FillBuffer(targetPoint, blastRadius);
+			//for (int i = 0; i < TargetPoint.BufferedCount; i++)
+			//{
+			//	TargetPoint.GetBuffered(i).Enemy.ApplyDamage(damage);
+			//}
+			Game.SpawnExplosion().Initialize(targetPoint, blastRadius, damage);
 			OriginFactory.Reclaim(this);
 			return false;
 		}

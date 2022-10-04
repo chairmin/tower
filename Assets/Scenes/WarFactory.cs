@@ -21,4 +21,8 @@ public class WarFactory : GameObjectFactory
 		Debug.Assert(entity.OriginFactory == this, "Wrong factory reclaimed!");
 		Destroy(entity.gameObject);
 	}
+
+	[SerializeField]
+	Explosion explosionPrefab = default;
+	public Explosion Explosion => Get(explosionPrefab);
 }
