@@ -22,6 +22,11 @@ public class Shell : WarEntity {
 
         Vector3 d = launchVelocity;
 		d.y -= 9.81f * age;
+		if (p.y <= 0f)
+		{
+			OriginFactory.Reclaim(this);
+			return false;
+		}
 		transform.localRotation = Quaternion.LookRotation(d);
 		return true;
 	}
