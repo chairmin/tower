@@ -16,7 +16,8 @@ public class Explosion : WarEntity
 			TargetPoint.GetBuffered(i).Enemy.ApplyDamage(damage);
 		}
 		transform.localPosition = position;
-		transform.localScale = Vector3.one * (2f * blastRadius);
+		//transform.localScale = Vector3.one * (2f * blastRadius);
+		scale = 2f * blastRadius;
 	}
 
 	public override bool GameUpdate()
@@ -27,6 +28,36 @@ public class Explosion : WarEntity
 			OriginFactory.Reclaim(this);
 			return false;
 		}
+
+		if (propertyBlock == null)
+		{
+			propertyBlock = new MaterialPropertyBlock();
+		}
+		float t = age / duration;
+		Color c = Color.clear;
+		c.a = opacityCurve.Evaluate(t);
+		propertyBlock.SetColor(colorPropertyID, c);
+		meshRenderer.SetPropertyBlock(propertyBlock);
+		transform.localScale = Vector3.one * (scale * scaleCurve.Evaluate(t));
 		return true;
+	}
+
+	[SerializeField]
+	AnimationCurve opacityCurve = default;
+
+	[SerializeField]
+	AnimationCurve scaleCurve = default;
+
+	static int colorPropertyID = Shader.PropertyToID("_Color");
+
+	static MaterialPropertyBlock propertyBlock;
+	float scale;
+
+	MeshRenderer meshRenderer;
+
+	void Awake()
+	{
+		meshRenderer = GetComponent<MeshRenderer>();
+		Debug.Assert(meshRenderer != null, "Explosion without renderer!");
 	}
 }
